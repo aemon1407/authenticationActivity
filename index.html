@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Form</title>
+    <link rel="stylesheet" type="text/css" href="form.css">
+    <script src="form.js"></script>
+</head>
+<body>
+
+    <h1>RESTAURANT BOOKING FORM</h1>
+
+    <form action="form.php" method="post" onsubmit="return validateForm()">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="phoneNum">Phone Number:</label><br>
+        <input type="text" id="phoneNum" name="phoneNum" required><br><br>
+        <label for="pax">Total Pax:</label><br>
+        <input type="number" id="pax" name="pax" required><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="errorMessages"></div>
+
+</body>
+</html>
