@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,14 +17,14 @@
     <div class="reservation-container">
         <div class="reservation-form-container">
             <h2>Restaurant Reservation</h2>
-            <form id="reservation-form" action="#" method="POST">
+            <form id="reservation-form" action="process.php" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
 
-                <label for="email">Email: (Example: asedada@yahoo.com)</label>
+                <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
 
-                <label for="phone">Phone: (Example: 60182228383)</label>
+                <label for="phone">Phone:</label>
                 <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
 
                 <label for="date">Reservation Date:</label>
@@ -37,6 +44,6 @@
         </div>
         <div id="reservation-details" class="reservation-details"></div>
     </div>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
