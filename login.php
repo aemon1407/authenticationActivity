@@ -5,10 +5,11 @@ if (isset($_SESSION['email'])) {
     header("Location: index.php");
     exit();
 }
+
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "restaurantlogin";
+$dbname = "restaurant_reservation";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
