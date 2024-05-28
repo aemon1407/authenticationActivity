@@ -5,10 +5,11 @@ if (isset($_SESSION['email'])) {
     header("Location: index.php");
     exit();
 }
+
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "restaurantlogin";
+$dbname = "restaurant_reservation";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -20,9 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars(trim($_POST['email']));
     $password = htmlspecialchars(trim($_POST['password']));
 
+    // Hash the password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (email, password) VALUES ('$email', '$hashed_password')";
+    // Sanitize the email
+    $sanitized_email = htmlspecialchars($email);
+
+    $sql = "INSERT INTO users (email, password) VALUES ('$sanitized_email', '$hashed_password')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Registration successful. <a href='login.php'>Login here</a>.";
